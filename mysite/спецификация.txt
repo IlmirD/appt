@@ -1,0 +1,54 @@
+1. В postgres создать базу данных:
+    CREATE DATABASE apptimism;
+    CREATE USER apptimism WITH PASSWORD 'apptimism2021';
+    GRANT ALL PRIVILEGES ON DATABASE apptimism TO apptimism;
+
+    Мигрировать данные
+
+    Для теста: ALTER USER apptimism CREATEDB;
+
+2. REST Api:
+
+- Зарегестрировать пользователя:
+    post запрос по адресу 127.0.0.1:8000/api/user/register
+        form-data:
+            email: email
+            username: username
+            language: en или ru
+            password: password
+            password2: password
+
+- Войти:
+    post запрос по адресу 127.0.0.1:8000/api/user/login
+        form-data:
+            email: email
+            password: password
+
+- Получить машины пользователя
+    get запрос по адресу 127.0.0.1:8000/api/user/getusercars
+        request headers:
+            Authorization Token token
+
+
+- Изменить данные пользователя
+    post запрос по адресу 127.0.0.1:8000/api/user/edituser
+        request headers:
+            Authorization Token token
+     form-data:
+            email: email
+            username: username
+            language: en или ru
+
+- Получить всех пользователей
+    get запрос по адресу 127.0.0.1:8000/api/user/getallusers
+        request headers:
+            Authorization Token token    
+
+
+3. Сайт:
+    Добавить машину и добавить машину пользователю может только админ.
+    В settings добавить EMAIL_HOST_USER и EMAIL_HOST_PASSWORD
+
+
+
+

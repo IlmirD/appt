@@ -1,0 +1,19 @@
+{% extends 'avtoprokat/base.html' %}
+
+{% block title %}Информация о пользователе{% endblock %}
+
+{% block content %}
+{% load static %}
+<div style='padding: 3%; padding-left: 20%; padding-right: 20%;'>
+        {% for u in user %}
+        <p>Информация о пользователе {{ request.user.username }}</p>
+                <h6>Имя:</h6>
+                        <p>{{ u.username }}</p>
+                <h6>Email:</h6>
+                        <p>{{ u.email }}</p>
+                <h6>Язык:</h6>
+                <p>{{ u.language }}</p>
+        {% endfor %}
+</div>
+
+{% endblock content %}

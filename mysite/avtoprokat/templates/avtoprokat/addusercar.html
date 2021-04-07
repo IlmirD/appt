@@ -1,0 +1,32 @@
+{% extends 'avtoprokat/base.html' %}
+
+{% block title %}Добавить машину пользователю{% endblock %}
+
+
+{% block content %}
+{% load static %}
+<div class="car" style='padding: 3%; padding-left: 20%; padding-right: 20%;'>
+<form action="{% url 'addusercar' %}" method="post"> {% csrf_token %}
+        <h4 class="text-center">Добавить машину пользователю</h4>
+                <div class="form-group">
+                <p>Имя пользователя:</p>
+                        <select id="email" name="username" required="required">
+                                {% for u in users %}
+                                        <option>{{ u.username }}</option>
+                                {% endfor %}
+                        </select>
+                </div>
+                <p>Список машин:</p>
+                        <select id="cars" name="cars" required="required">
+                                {% for c in cars %}
+                                        <option>{{ c.name_en }}</option>
+                                {% endfor %}
+                        </select>
+                <div class="form-group" style='padding-left: 30%; padding-right: 30%;'>
+                        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+                </div>
+        </form>
+</div>
+
+{% endblock content %}
+
